@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedding in IFrame</title>
+    <script type="text/javascript">
+        function smfqlnfckpskyf_gfz(u) {
+            document.getElementById('contentFrame').firstChild.src = u;
+        };
+
+        function enableCO() {
+            var eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent';
+            var eventer = window[eventMethod];
+            var messageEvent = eventMethod == 'attachEvent' ? 'onmessage' : 'message';
+            eventer(messageEvent, function (e) {
+                console.log('parent received message!: ', e.data);
+                if (~e.origin.indexOf('http://localhost:8001')) {
+                    console.log('parent received message from origin !: ', e.origin);
+                    smfqlnfckpskyf_gfz(e.data);
+                }
+            }, false);
+        };
+    </script>
+</head>
+
+<body style="background: #d0ffd0;">
+<h1>This is a HTML page</h1>
+
+<table align="center" border="3">
+    <tr>
+        <th>The Menu</th>
+        <th>The Content</th>
+    </tr>
+    <tr valign="top">
+        <td>
+            <iframe src="http://localhost:8001" height="200"
+                    width="150" frameborder="0"></iframe>
+        </td>
+        <td>
+            <iframe src="http://localhost:8002"
+                    height="330" width="400"
+                    frameborder="0"></iframe>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=9;chrome=1" />
+
+    <title>Embedding a Vaadin Application in HTML Page</title>
+
+    <!-- Set up the favicon from the Vaadin theme -->
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon"
+          href="/VAADIN/themes/reindeer/favicon.ico" />
+    <link rel="icon" type="image/vnd.microsoft.icon"
+          href="/VAADIN/themes/reindeer/favicon.ico" />
+</head>
+
+<body>
+<!-- Loads the Vaadin widget set, etc. -->
+<script type="text/javascript"
+        src="VAADIN/vaadinBootstrap.js"></script>
+
+<h1>Embedding a Vaadin UI</h1>
+
+<p>This is a static web page that contains an embedded Vaadin
+    application. It's here:</p>
+
+<!-- So here comes the div element in which the Vaadin -->
+<!-- application is embedded.                          -->
+<div style="border: 2px solid green;"
+     id="helloworld" class="v-app">
+
+    <!-- Optional placeholder for the loading indicator -->
+    <div class=" v-app-loading"></div>
+
+    <!-- Alternative fallback text -->
+    <noscript>You have to enable javascript in your browser to
+        use an application built with Vaadin.</noscript>
+</div>
+<div style="border: 2px solid green;"
+     id="content" class="v-app">
+    <div class=" v-app-loading"></div>
+    <noscript>You have to enable javascript in your browser to use an application built with Vaadin.</noscript>
+</div>
+
+<script type="text/javascript">
+    if (!window.vaadin)
+        alert("Failed to load the bootstrap JavaScript: VAADIN/vaadinBootstrap.js");
+
+
+    /* The UI Configuration */
+    vaadin.initApplication("helloworld", {
+        "browserDetailsUrl": "/",
+        "serviceUrl": "/vaadinServlet",
+        "widgetset": "com.vaadin.DefaultWidgetSet",
+        "theme": "valo",
+        "versionInfo": {"vaadinVersion": "8.3.1"},
+        "vaadinDir": "VAADIN/",
+        "heartbeatInterval": 300,
+        "debug": true,
+        "standalone": false,
+        "authErrMsg": {
+            "message": "Take note of any unsaved data, "+
+            "and <u>click here<\/u> to continue.",
+            "caption": "Authentication problem"
+        },
+        "comErrMsg": {
+            "message": "Take note of any unsaved data, "+
+            "and <u>click here<\/u> to continue.",
+            "caption": "Communication problem"
+        },
+        "sessExpMsg": {
+            "message": "Take note of any unsaved data, "+
+            "and <u>click here<\/u> to continue.",
+            "caption": "Session Expired"
+        }
+    });
+
+    /* The UI Configuration */
+    vaadin.initApplication("content", {
+        "browserDetailsUrl": "http://localhost:8002/",
+        "serviceUrl": "http://localhost:8002/vaadinServlet",
+        "widgetset": "com.vaadin.DefaultWidgetSet",
+        "theme": "valo",
+        "versionInfo": {"vaadinVersion": "8.3.1"},
+        "vaadinDir": "VAADIN/",
+        "heartbeatInterval": 300,
+        "debug": true,
+        "standalone": false,
+        "authErrMsg": {
+            "message": "Take note of any unsaved data, "+
+            "and <u>click here<\/u> to continue.",
+            "caption": "Authentication problem"
+        },
+        "comErrMsg": {
+            "message": "Take note of any unsaved data, "+
+            "and <u>click here<\/u> to continue.",
+            "caption": "Communication problem"
+        },
+        "sessExpMsg": {
+            "message": "Take note of any unsaved data, "+
+            "and <u>click here<\/u> to continue.",
+            "caption": "Session Expired"
+        }
+    });
+</script>
+
+<p>Please view the page source to see how embedding works.</p>
+</body>
+</html>
